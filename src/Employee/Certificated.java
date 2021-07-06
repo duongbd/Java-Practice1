@@ -1,0 +1,4 @@
+package Employee;
+
+class Certificated {
+}
