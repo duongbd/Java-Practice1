@@ -3,6 +3,10 @@ package CustomThread;
 import java.util.Scanner;
 
 public class MainRunnable implements Runnable {
+    public static void setAction(String action) {
+        MainRunnable.action = action;
+    }
+
     private static String action="";
     private static boolean isEndProgram = false;
 
@@ -26,10 +30,16 @@ public class MainRunnable implements Runnable {
                     action = "add";
                     break;
                 case "modify":
+                    isStopProgram = true;
+                    action = "modify";
                     break;
                 case "delete":
+                    isStopProgram = true;
+                    action = "delete";
                     break;
-                case "search":
+                case "show":
+                    isStopProgram = true;
+                    action = "show";
                     break;
                 case "quit":
                     isEndProgram = true;

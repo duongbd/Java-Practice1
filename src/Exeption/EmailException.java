@@ -6,4 +6,7 @@ public class EmailException extends RuntimeException {
     public String getErrorInfo() {
         return errorInfo;
     }
+    public EmailException() {
+        System.out.println(getErrorInfo());
+    }
 }

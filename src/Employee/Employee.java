@@ -1,22 +1,18 @@
 package Employee;
 
-import Exeption.BirthDayException;
-import Exeption.EmailException;
+import java.util.List;
 
 public abstract class Employee {
-    final static String REGEX_BIRTH_DAY = "[\\d]{2}/[\\d]{2}/[\\d]{4}";
-    final static String REGEX_EMAIL = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,6}$";
 
     static private int employeeCount = 0;
     private int Id,employeeType;
     private String fullName, birthDay, phone, email;
 
-    public static boolean isValidateBirthDay(String birthDay) {
-        return birthDay.matches(REGEX_BIRTH_DAY);
+    public List<Certificated> getCertificateds() {
+        return certificateds;
     }
-    public static boolean isValidateEmail(String email) {
-        return email.matches(REGEX_EMAIL);
-    }
+
+    private List<Certificated> certificateds;
 
     public static int getEmployeeCount() {
         return employeeCount;
@@ -51,10 +47,7 @@ public abstract class Employee {
     }
 
     public void setBirthDay(String birthDay) {
-            if (Employee.isValidateBirthDay(birthDay)){
                 this.birthDay=birthDay;
-            }
-            else throw new BirthDayException();
     }
 
     public String getPhone() {
@@ -70,10 +63,7 @@ public abstract class Employee {
     }
 
     public void setEmail(String email) {
-        if (Employee.isValidateEmail(email)){
             this.email=email;
-        }
-        else throw new EmailException();
     }
 
     public int getEmployeeType() {
@@ -84,21 +74,26 @@ public abstract class Employee {
         this.employeeType = employeeType;
     }
 
-    public Employee(int Id, String fullName, String birthDay, String phone, String email, int employeeType) {
-        this.Id = Id;
-        this.setFullName(fullName);
-        this.setBirthDay(birthDay);
-        this.setPhone(phone);
-        this.setEmail(email);
+    public Employee(int employeeType, String fullName, String birthDay, String phone, String email) {
+        Id = ++employeeCount;
         this.employeeType = employeeType;
+        this.fullName = fullName;
+        this.birthDay = birthDay;
+        this.phone = phone;
+        this.email = email;
     }
+
+    public Employee(){
+        Id=++employeeCount;
+    }
+
     public void showInfo(){
-        System.out.println(this.Id);
-        System.out.println(this.fullName);
-        System.out.println(this.birthDay);
-        System.out.println(this.phone);
-        System.out.println(this.email);
-        System.out.println(this.employeeType);
+        System.out.println("ID        : "+this.Id);
+        System.out.println("Full name : "+this.fullName);
+        System.out.println("Birth day : "+this.birthDay);
+        System.out.println("Phone     : "+this.phone);
+        System.out.println("Email     : "+this.email);
+        System.out.println("Type      : "+this.employeeType);
     }
-    abstract void showMe();
+    abstract public void showMe();
 }

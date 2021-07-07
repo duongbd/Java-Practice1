@@ -7,5 +7,7 @@ public class BirthDayException extends RuntimeException {
         return errorInfo;
     }
 
-
+    public BirthDayException() {
+        System.out.println(getErrorInfo());
+    }
 }

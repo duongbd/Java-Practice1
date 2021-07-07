@@ -20,16 +20,20 @@ public class Experience extends Employee {
         this.proSkill = proSkill;
     }
 
-    public Experience(int Id, String fullName, String birthDay, String phone, String email, int employeeType, int expInYear, String proSkill) {
-        super(Id, fullName, birthDay, phone, email, employeeType);
+    public Experience(String fullName, String birthDay, String phone, String email, int employeeType, int expInYear, String proSkill) {
+        super(employeeType, fullName, birthDay, phone, email);
         this.expInYear = expInYear;
         this.proSkill = proSkill;
     }
 
+    public Experience(){
+        super();
+    }
+
     @Override
-    void showMe() {
+    public void showMe() {
         this.showInfo();
-        System.out.println(this.expInYear);
-        System.out.println(this.proSkill);
+        System.out.println("ExpInYear : "+this.expInYear);
+        System.out.println("Pro skill : "+this.proSkill);
     }
 }
